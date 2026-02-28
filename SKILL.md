@@ -1,11 +1,11 @@
 ---
-name: money-idea-generator
-description: "赚钱灵感生成器 | Money Idea Generator. 自动发现 AI 变现机会，生成可落地的赚钱灵感。触发词：赚钱灵感、赚钱机会、AI 变现、商业灵感."
+name: openclaw-skill-money-idea-generator
+description: "赚钱灵感生成器 | Money Idea Generator. 自动发现 AI 变现机会，生成可落地的赚钱灵感。支持多平台监控：GitHub、抖音、B站、小红书、Twitter。触发词：赚钱灵感、赚钱机会、AI 变现、商业灵感."
 metadata:
   openclaw:
     emoji: "💰"
     category: "business"
-    tags: ["money", "idea", "business", "AI", "monetization", "startup"]
+    tags: ["money", "idea", "business", "AI", "monetization", "startup", "multi-source"]
     requires:
       bins: ["python3", "curl"]
 ---
@@ -16,10 +16,12 @@ metadata:
 
 ## 核心功能
 
-### 1. 热门项目监控
-- 监控 GitHub Trending AI 项目
-- 分析新增星标速度
-- 识别热门技术趋势
+### 1. 多平台监控
+- GitHub Trending AI 项目
+- 抖音热门话题
+- B站科技区视频
+- 小红书热门笔记
+- Twitter AI trending
 
 ### 2. 变现潜力分析
 - 判断项目是否"能赚钱"
@@ -31,7 +33,12 @@ metadata:
 - 提供具体实现路径
 - 估算启动成本和预期收入
 
-### 4. 个性化推荐
+### 4. 资产池管理
+- 保存灵感到资产池
+- 跟踪执行状态
+- 记录实际收益
+
+### 5. 个性化推荐
 - 根据用户偏好推荐
 - 按领域分类（AI 工具、SaaS、内容创作）
 - 按难度分级（入门/进阶/专业）
@@ -42,30 +49,16 @@ metadata:
 
 ```
 给我生成一个赚钱灵感
+最近有什么赚钱机会？
 ```
 
-返回：
-```json
-{
-  "idea": "AI 客服机器人定制开发服务",
-  "potential": "高",
-  "target_users": ["电商卖家", "自媒体运营者", "小微企业"],
-  "implementation": {
-    "steps": ["选择 AI 平台", "开发对话流程", "部署测试"],
-    "cost": "¥500 以内",
-    "expected_income": "¥10,000+/月",
-    "time": "周末 2 天"
-  }
-}
-```
-
-### 分析某个项目能否赚钱
+### 分析特定项目
 
 ```
 分析这个项目能不能赚钱：https://github.com/xxx/xxx
 ```
 
-### 获取热门 AI 变现机会
+### 获取热门变现机会
 
 ```
 最近有什么 AI 变现机会？
@@ -101,5 +94,6 @@ metadata:
 
 在 `config.py` 中配置：
 - `GITHUB_TOKEN`: GitHub API Token（可选，提高速率限制）
-- `MIN_STARS`: 最小星标数（默认 100）
+- `MIN_STARS`: 最小星标数（默认 50）
 - `CATEGORIES`: 关注的领域（默认 AI/LLM/Agent）
+- `USER_PREFERENCES`: 用户偏好（预算、技能、兴趣）
